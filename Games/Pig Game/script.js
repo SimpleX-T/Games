@@ -109,3 +109,12 @@ btnRoll.addEventListener("click", () => {
 		player1El.classList.toggle("player--active");
 	}
 });
+
+btnHold.addEventListener("click", () => {
+	document.getElementById(`score--${activePlayer}`).textContent = currScore;
+	currScore = 0;
+	document.getElementById(`current--${activePlayer}`).textContent = currScore;
+	activePlayer = activePlayer === 0 ? 1 : 0;
+	player0El.classList.toggle("player--active");
+	player1El.classList.toggle("player--active");
+});
