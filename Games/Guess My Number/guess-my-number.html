@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="guess.css">
+    <title>DEMO: Guess My Number!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <button id="startGame">Start Game!</button>
+            <p class="hint">(Between 1 to 20)</p>
+        </div>
+        <div class="main">
+            <h1>Guess My Number!</h1>
+            <h2 id="correctGuess">?</h2>
+        </div>
+        <div class="bottom flex">
+            <div class="user-input">
+                <input type="text" id="userInput">
+                <button id="check">Check!</button>
+            </div>
+            <div class="score-board">
+                <div class="score-display">
+                    <h2 id="start">
+                        <span>🏁</span>
+                        Start Guessing...
+                    </h2>
+                </div>
+
+                <div class="score-display">
+                    <h2>
+                        <span>💯</span>
+                        Score :
+                        <span id="score">20</span>
+                    </h2>
+                </div>
+                <div class="score-display">
+                    <h2>
+                        <span>🥇</span>
+                        Highscore:
+                        <span id="highScore">0</span>
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="guess.js"></script>
+</body>
+
+</html>

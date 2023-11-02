@@ -1,0 +1,137 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "arcadeclassic";
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	padding: 20px;
+	background: #222;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.5s ease;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+}
+
+.top {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 20px;
+	padding-inline: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	/* border: 1px solid; */
+}
+
+.top button {
+	padding: 8px 22px;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.top .hint {
+	position: absolute;
+	top: 1px;
+	right: 15px;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+.main {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	margin-block: 40px;
+	text-align: center;
+	border-bottom: 7px solid #fff;
+}
+
+.main h1 {
+	font-size: 3rem;
+	font-weight: 600;
+}
+
+.main #correctGuess {
+	width: 100px;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 10px auto 0;
+	border-radius: 2px;
+	background: #fff;
+	text-align: center;
+	font-size: 2.25rem;
+	color: #000;
+	font-weight: bold;
+}
+
+.bottom {
+	width: 100%;
+	margin-top: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.bottom .user-input {
+	flex: 0 0 40%;
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	/* border: 1px solid #fff; */
+}
+
+.user-input input {
+	flex: 0 0 100%;
+	width: 100%;
+	padding-block: 15px;
+	font-weight: bold;
+	text-align: center;
+	font-size: 2.5rem;
+	color: #fff;
+	background: none;
+	border: 2px solid #fff;
+}
+
+.user-input button {
+	margin-top: 20px;
+	padding: 10px 25px;
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.bottom .score-board {
+	flex: 0 0 50%;
+	height: 110px;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.score-display {
+	width: 90%;
+}
+
+.score-display h2 {
+	font-size: 1.2rem;
+	font-weight: 500;
+}
