@@ -150,16 +150,20 @@ main {
 	left: 50%;
 	transform: translateX(-50%);
 	top: 16.5rem;
-	box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+	filter: drop-shadow(0 2rem 5rem rgba(0, 0, 0, 0.2));
 }
 
 .player--winner {
-	background-color: #2f2f2f;
+	background-color: rgba(255, 162, 75, 0.733);
 }
 
 .player--winner .name {
 	font-weight: 700;
 	color: #c7365f;
+}
+
+.player--winner .score {
+	font-size: 3rem;
 }
 
 .hidden {

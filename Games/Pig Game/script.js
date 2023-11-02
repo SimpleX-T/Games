@@ -87,6 +87,13 @@ let currScore = 0;
 let activePlayer = 0;
 const scores = [0, 0];
 
+const setPlayerValues = function () {
+	document.getElementById(`current--${activePlayer}`).textContent = currScore;
+	activePlayer = activePlayer === 0 ? 1 : 0;
+	player0El.classList.toggle("player--active");
+	player1El.classList.toggle("player--active");
+};
+
 // Generate a random dice roll number,
 // Check the dice roll number,
 btnRoll.addEventListener("click", () => {
@@ -102,29 +109,25 @@ btnRoll.addEventListener("click", () => {
 	} else {
 		currScore0El.textContent = currScore;
 		currScore = 0;
-		document.getElementById(`current--${activePlayer}`).textContent =
-			currScore;
-		activePlayer = activePlayer === 0 ? 1 : 0;
-		player0El.classList.toggle("player--active");
-		player1El.classList.toggle("player--active");
+		setPlayerValues();
 	}
 });
 
 btnHold.addEventListener("click", () => {
-	if (scores[activePlayer] < 100) {
-		scores[activePlayer] += currScore;
-		document.getElementById(`score--${activePlayer}`).textContent =
-			scores[activePlayer];
-		currScore = 0;
-		document.getElementById(`current--${activePlayer}`).textContent =
-			currScore;
-		activePlayer = activePlayer === 0 ? 1 : 0;
-		player0El.classList.toggle("player--active");
-		player1El.classList.toggle("player--active");
-	} else {
-		document.getElementById(`score--${activePlayer}`).textContent = 100;
+	scores[activePlayer] += currScore;
+	document.getElementById(`score--${activePlayer}`).textContent =
+		scores[activePlayer];
+	currScore = 0;
+	// setPlayerValues();
+	if (scores[activePlayer] >= 10) {
+		document.getElementById(
+			`score--${activePlayer}`
+		).textContent = `Player ${activePlayer + 1} won!!🎉🎉💥`;
 		document
-			.getElementById(`player--${activePlayer}`)
+			.querySelector(`.player--${activePlayer}`)
 			.classList.add("player--winner");
+		document
+			.querySelector(`.player--${activePlayer}`)
+			.classList.remove("player--active");
 	}
 });
