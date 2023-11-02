@@ -98,7 +98,7 @@ btnRoll.addEventListener("click", () => {
 		currScore += diceNum;
 		document.getElementById(`current--${activePlayer}`).textContent =
 			currScore;
-		console.log(currScore);
+		// currScore = 0;
 	} else {
 		currScore0El.textContent = currScore;
 		currScore = 0;
@@ -111,10 +111,20 @@ btnRoll.addEventListener("click", () => {
 });
 
 btnHold.addEventListener("click", () => {
-	document.getElementById(`score--${activePlayer}`).textContent = currScore;
-	currScore = 0;
-	document.getElementById(`current--${activePlayer}`).textContent = currScore;
-	activePlayer = activePlayer === 0 ? 1 : 0;
-	player0El.classList.toggle("player--active");
-	player1El.classList.toggle("player--active");
+	if (scores[activePlayer] < 100) {
+		scores[activePlayer] += currScore;
+		document.getElementById(`score--${activePlayer}`).textContent =
+			scores[activePlayer];
+		currScore = 0;
+		document.getElementById(`current--${activePlayer}`).textContent =
+			currScore;
+		activePlayer = activePlayer === 0 ? 1 : 0;
+		player0El.classList.toggle("player--active");
+		player1El.classList.toggle("player--active");
+	} else {
+		document.getElementById(`score--${activePlayer}`).textContent = 100;
+		document
+			.getElementById(`player--${activePlayer}`)
+			.classList.add("player--winner");
+	}
 });
