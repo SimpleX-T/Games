@@ -114,11 +114,6 @@ btnRoll.addEventListener("click", () => {
 });
 
 btnHold.addEventListener("click", () => {
-	scores[activePlayer] += currScore;
-	document.getElementById(`score--${activePlayer}`).textContent =
-		scores[activePlayer];
-	currScore = 0;
-	setPlayerValues();
 	if (scores[activePlayer] >= 10) {
 		document.getElementById(
 			`score--${activePlayer}`
@@ -130,4 +125,9 @@ btnHold.addEventListener("click", () => {
 			.querySelector(`.player--${activePlayer}`)
 			.classList.remove("player--active");
 	}
+	scores[activePlayer] += currScore;
+	document.getElementById(`score--${activePlayer}`).textContent =
+		scores[activePlayer];
+	currScore = 0;
+	setPlayerValues();
 });
