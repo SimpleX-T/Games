@@ -85,6 +85,7 @@ score1EL.textContent = 0;
 diceEl.classList.add("hidden");
 let currScore = 0;
 let activePlayer = 0;
+let playing = true;
 const scores = [0, 0];
 
 const setPlayerValues = function () {
@@ -114,20 +115,18 @@ btnRoll.addEventListener("click", () => {
 });
 
 btnHold.addEventListener("click", () => {
-	if (scores[activePlayer] >= 10) {
-		document.getElementById(
-			`score--${activePlayer}`
-		).textContent = `Player ${activePlayer + 1} won!!🎉🎉💥`;
-		document
-			.querySelector(`.player--${activePlayer}`)
-			.classList.add("player--winner");
-		document
-			.querySelector(`.player--${activePlayer}`)
-			.classList.remove("player--active");
+	if (playing) {
+		scores[activePlayer] += currScore;
+
+		if (scores[activePlayer] >= 10) {
+			document
+				.querySelector(`.player--${activePlayer}`)
+				.classList.add("player--winner");
+			document
+				.querySelector(`.player--${activePlayer}`)
+				.classList.remove("player--active");
+		} else {
+			setPlayerValues();
+		}
 	}
-	scores[activePlayer] += currScore;
-	document.getElementById(`score--${activePlayer}`).textContent =
-		scores[activePlayer];
-	currScore = 0;
-	setPlayerValues();
 });

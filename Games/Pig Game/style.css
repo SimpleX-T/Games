@@ -63,6 +63,7 @@ main {
 
 .player--active .name {
 	font-weight: 700;
+	/* transition: 0.3s ease-in-out; */
 }
 
 .player--active .score {
