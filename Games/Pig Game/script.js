@@ -118,7 +118,7 @@ btnHold.addEventListener("click", () => {
 	document.getElementById(`score--${activePlayer}`).textContent =
 		scores[activePlayer];
 	currScore = 0;
-	// setPlayerValues();
+	setPlayerValues();
 	if (scores[activePlayer] >= 10) {
 		document.getElementById(
 			`score--${activePlayer}`
