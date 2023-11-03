@@ -98,27 +98,41 @@ const setPlayerValues = function () {
 // Generate a random dice roll number,
 // Check the dice roll number,
 btnRoll.addEventListener("click", () => {
-	let diceNum = Math.trunc(Math.random() * 6 + 1);
-	diceEl.classList.remove("hidden");
-	diceEl.src = `images/dice-${diceNum}.png`;
+	if (playing) {
+		let diceNum = Math.trunc(Math.random() * 6 + 1);
+		diceEl.classList.remove("hidden");
+		diceEl.src = `images/dice-${diceNum}.png`;
 
-	if (diceNum !== 1) {
-		currScore += diceNum;
-		document.getElementById(`current--${activePlayer}`).textContent =
-			currScore;
-		// currScore = 0;
-	} else {
-		currScore0El.textContent = currScore;
-		currScore = 0;
-		setPlayerValues();
-	}
+		if (diceNum !== 1) {
+			currScore += diceNum;
+			document.getElementById(`current--${activePlayer}`).textContent =
+				currScore;
+			// currScore = 0;
+		} else {
+			currScore0El.textContent = currScore;
+			currScore = 0;
+			setPlayerValues();
+		}
+	} else
+		alert(
+			`Player ${
+				activePlayer + 1
+			} has won this set, restart the game to continue`
+		);
 });
 
 btnHold.addEventListener("click", () => {
+	// activePlayer = activePlayer === 0 ? 1 : 0;
+
 	if (playing) {
 		scores[activePlayer] += currScore;
 
+		document.getElementById(`score--${activePlayer}`).textContent =
+			scores[activePlayer];
+		currScore = 0;
+
 		if (scores[activePlayer] >= 10) {
+			playing = false;
 			document
 				.querySelector(`.player--${activePlayer}`)
 				.classList.add("player--winner");
@@ -128,5 +142,10 @@ btnHold.addEventListener("click", () => {
 		} else {
 			setPlayerValues();
 		}
-	}
+	} else
+		alert(
+			`Player ${
+				activePlayer + 1
+			} has won this set, restart the game to continue`
+		);
 });
