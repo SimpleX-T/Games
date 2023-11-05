@@ -70,6 +70,40 @@ const diceEl = document.getElementById("dice");
 const btnNew = document.getElementById("newBtn");
 const btnRoll = document.getElementById("rollDice");
 const btnHold = document.getElementById("hold");
+const modalWindow = document.querySelector(".Instmodal");
+const closeBtn = document.querySelector(".closeBtn");
+const overlay = document.querySelector(".overlay");
+
+// Starting Instructions
+modalWindow.classList.add("hidden");
+overlay.classList.add("hidden");
+
+window.addEventListener("load", () => {
+	setTimeout(() => {
+		modalWindow.classList.remove("hidden");
+		overlay.classList.remove("hidden");
+		modalFunction();
+	}, 1000);
+});
+
+const modalFunction = function () {
+	const closeModal = function () {
+		modalWindow.classList.add("hidden");
+		overlay.classList.add("hidden");
+	};
+
+	closeBtn.addEventListener("click", () => {
+		closeModal();
+	});
+
+	overlay.addEventListener("click", () => {
+		closeModal();
+	});
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") closeModal();
+	});
+};
 
 // Starting conditions
 
@@ -113,10 +147,10 @@ btnRoll.addEventListener("click", () => {
 			currScore += diceNum;
 			document.getElementById(`current--${activePlayer}`).textContent =
 				currScore;
-			// currScore = 0;
 		} else {
-			currScore0El.textContent = currScore;
 			currScore = 0;
+			document.getElementById(`current--${activePlayer}`).textContent =
+				currScore;
 			setPlayerValues();
 		}
 	} else
