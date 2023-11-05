@@ -80,13 +80,14 @@ overlay.classList.add("hidden");
 
 window.addEventListener("load", () => {
 	setTimeout(() => {
-		modalWindow.classList.remove("hidden");
-		overlay.classList.remove("hidden");
 		modalFunction();
 	}, 1000);
 });
 
 const modalFunction = function () {
+	modalWindow.classList.remove("hidden");
+	overlay.classList.remove("hidden");
+
 	const closeModal = function () {
 		modalWindow.classList.add("hidden");
 		overlay.classList.add("hidden");
@@ -138,8 +139,8 @@ init();
 // Generate a random dice roll number,
 // Check the dice roll number,
 btnRoll.addEventListener("click", () => {
+	let diceNum = Math.trunc(Math.random() * 6 + 1);
 	if (playing) {
-		let diceNum = Math.trunc(Math.random() * 6 + 1);
 		diceEl.classList.remove("hidden");
 		diceEl.src = `images/dice-${diceNum}.png`;
 
@@ -149,8 +150,6 @@ btnRoll.addEventListener("click", () => {
 				currScore;
 		} else {
 			currScore = 0;
-			document.getElementById(`current--${activePlayer}`).textContent =
-				currScore;
 			setPlayerValues();
 		}
 	} else
