@@ -181,3 +181,209 @@ overlay.addEventListener("click", () => {
 document.addEventListener("keydown", (e) => {
 	if (e.key === "Escape") closeModal();
 });
+
+// const nested = [2, 4, [3, 5]];
+// const [even, , odd] = nested;
+// console.log(even, odd);
+
+// let prototype = document.createElement("input");
+// pr
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
+// console.log(a, b);
+
+let arr = [4, 5, 6];
+let newArr = [1, 2, 3, ...arr];
+
+// console.log(newArr, `Number ${newArr}`);
+const weekdays = ["mon"];
+const bonuses = ["10%", "15%", "30%"];
+
+const restaurant = {
+	name: "Mama Nkechi Resturant",
+	location: "Abakpa Nike, Enugu",
+	categories: ["Italian", "Nigerian Local", "Chinese Food"],
+	mainMenu: ["Jollof Rice", "Rice and Stew", "Bean and Plantain", "Swallow"],
+	sideDishes: ["Indomie and Egg", "Tea and Bread", "IceCream", "Fruit Salad"],
+	openingHours: {
+		mon: {
+			open: "08:00",
+			close: "18:00",
+		},
+		tue: {
+			open: "08:00",
+			close: "18:00",
+		},
+		wed: {
+			open: "08:00",
+			close: "18:00",
+		},
+		thu: {
+			open: "08:00",
+			close: "16:30",
+		},
+		fri: {
+			open: "08:00",
+			close: "15:00",
+		},
+		sat: {
+			open: "10:00",
+			close: "17:00",
+		},
+	},
+
+	// ES6 enhanced object literals
+	bonuses,
+	order({ mainMenu, sideDishes, address, time }) {
+		// console.log(
+		// 	`Order Received! ${this.mainMenu[mainMenu]} and ${this.sideDishes[sideDishes]} will be delivered to ${address} by ${time}.`
+		// );
+	},
+};
+
+restaurant.order({
+	address: "15 louis Ede crescent, Abakpa Nike Enugu",
+	time: "08:30",
+	mainMenu: 3,
+	sideDishes: 2,
+});
+
+// Copied Array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Joint Array
+const [sat, ...otherDays] = [restaurant.openingHours];
+
+// console.log(sat, otherDays);
+
+// Iterables are arrays, strings, maps, or sets but not objects
+let Tochukwu = {
+	firstName: "Mark",
+	lastName: "Ndubuisi",
+	birthYear: 2004,
+	job: "Student",
+	placeOfWork: "University of Nigeria, Nsukka.",
+	biography: function () {
+		console.log(
+			`His name is ${this.firstName} ${this.lastName}. He was born in the year ${this.birthYear}. He is a ${this.job} in the ${this.placeOfWork}`
+		);
+	},
+};
+// Tochukwu.biography();
+
+// SPREAD is used on the right side of the '=', while REST is used on the left side of the '='
+
+// console.log(undefined || 0 || "" || "Hello" || 23 || null);
+// What will be printed to the console?
+
+// console.log(undefined && 0 && "" && "Hello" && 23 && null);
+// What will be printed to the console?
+
+// let userName = prompt("What is Your Name? ") || "User";
+
+/*const rest1 = {
+	name: "Capri",
+	numGuests: 20,
+};
+
+const rest2 = {
+	name: "La Piazza",
+	owner: "Giovanni Rossi",
+};
+
+// OR assignment operator
+// rest2.numGuest = rest2.numGuests || 10;
+// rest1.numGuest = rest1.numGuests || 10;
+
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
+// console.log(rest1.numGuests, rest1.numGuests);
+
+// Logical Nullish assignment operator
+rest1.numGuests &&= 10;
+rest2.numGuests &&= 10;
+// console.log(rest1.numGuests, rest1.numGuests);
+
+// the OR operator will return the first truthy value or the last value if all of them are falsy, while,
+// the AND operator will return the first falsy value or the last value if all of them are truthy.
+// Nullish coalescing operator(NCO): This works on non-nullish values like (0 or '')
+// Nullish value are 'null' and 'undefined' (NOT 0 or '')*/
+
+/*Challenge
+
+const game = {
+	team1: "Bayern Munich",
+	team2: "Borrussia Dortmund",
+	players: [
+		[
+			"Neuer",
+			"Pavard",
+			"Martinez",
+			"Alaba",
+			"Davies",
+			"Kimmich",
+			"Goretzka",
+			"Coman",
+			"Muller",
+			"Gnarby",
+			"Lewandowski",
+		],
+		[
+			"Burki",
+			"Schulz",
+			"Hummels",
+			"Akanji",
+			"Hakimi",
+			"Weigl",
+			"Witsel",
+			"Hazard",
+			"Brandt",
+			"Sancho",
+			"Gotze",
+		],
+	],
+	score: "4:0",
+	scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+	date: "Nov 9th, 2037",
+	odds: {
+		team1: 1.33,
+		x: 3.25,
+		team2: 6.5,
+	},
+};
+
+// 1.
+const [team1, team2] = game.players; // ✔
+// 2.
+const [[gk1, ...fieldPlayers1], [gk2, ...fieldPlayers2]] = game.players; // ✔
+// 3.
+const allPlayers = [...team1, ...team2]; // ✔
+// 4.
+const team1Final = [...team1, "Thiago", "Coutinho", "Perisic"]; // ✔
+// 5.
+const { team1: team1Odd, x: drawOdd, team2: team2Odd } = game.odds; // ✔
+// 6.
+const printGoals = function (...players) {
+	console.log(`${players.length} goals were scored by ${players}`);
+};
+printGoals(...game.scored); // ✔
+// 7.
+team1Odd < team2Odd && console.log("Team 1 is more likely to win");
+team1Odd > team2Odd && console.log("Team 2 is more likely to win");
+// console.log((game.odds ||= 10));
+
+// console.log(team1Odd, drawOdd, team2Odd);
+
+// console.log(team1);
+// console.log(team2);
+// console.log(gk1, fieldPlayers1);
+// console.log(gk2, fieldPlayers2);
+// console.log(allPlayers);
+// console.log(team1Final);
+*/
+
+const menu = [...restaurant.mainMenu, ...restaurant.sideDishes];
+
+for (const [i, el] of menu.entries()) console.log(`${i + 1}. ${el}`);
